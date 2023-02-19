@@ -1,0 +1,106 @@
+services:
+
+  # API
+
+  banking-api:
+    build:
+      context: .
+      dockerfile: src/Dockerfile
+    container_name: banking-api
+    environment:
+      - ConnectionStrings:bankingdb=Server=bankingdb,5432;Database=bankdb;User ID=admin;Password=Qwertz123
+      - ConnectionStrings:redisCaching=redis:6379
+      - ASPNETCORE_URLS=http://*:5192
+    ports:
+     - 5192:5192
+    networks:
+     - bankingNetwork
+    links:
+     - bankingdb
+     - redis
+    depends_on:
+     - bankingdb
+     - redis
+
+  # PostgreSQL
+
+  bankingdb:
+    image: postgres
+    container_name: bankingdb 
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=Qwertz123
+      - POSTGRES_DB=bankdb
+    ports:
+        - 5432:5432
+    volumes:
+      - postgresdata:/var/lib/postgresql/data/
+    networks:
+     - bankingNetwork
+
+  #Only for docker registry and testing in build
+
+  #bankingdbTest:
+  #  image: postgres
+  #  container_name: bankingdbTest 
+  #  environment:
+  #      - POSTGRES_USER=admin
+  #      - POSTGRES_PASSWORD=Qwertz123
+  #      - POSTGRES_DB=bankdb
+  #  ports:
+  #      - 5433:5433
+  #  volumes:
+  #      - postgresdataTest:/var/lib/postgresql/data/
+
+  pgadmin:
+    image: dpage/pgadmin4  
+    container_name: pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@aspnetrun.com
+      - PGADMIN_DEFAULT_PASSWORD=Qwertz123
+    ports:
+        - 5050:80
+    volumes:
+      - pgadmindata:/root/.pgadmin
+
+  # Redis
+
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+        - "6379:6379"
+    networks:
+     - bankingNetwork  
+
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+
+  ## Container management
+
+  portainer:
+    image: portainer/portainer-ce
+    container_name: portainer
+    restart: unless-stopped
+    ports:
+      - 8080:8000
+      - 9000:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainerdata:/data
+
+volumes:
+  postgresdata:
+  pgadmindata:
+  portainerdata:
+  postgresdataTest:
+
+networks:
+    bankingNetwork:
+        driver: bridge

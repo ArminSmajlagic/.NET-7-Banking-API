@@ -1,0 +1,24 @@
+﻿apiVersion: app/v1
+kind: Deployment
+metadata:
+	name: banking
+	labels: 
+		app: banking-api
+spec:
+	replicas: 1
+	selector: 
+		matchLabels: 
+			service: banking
+	template: 
+		metadata:
+			labels:
+				app: banking-api
+				service: banking
+		spec:
+			containers:
+				- name: banking
+				  image: banking
+				  ports:
+				   - containerPort: 80
+				     protocol: TCP
+
