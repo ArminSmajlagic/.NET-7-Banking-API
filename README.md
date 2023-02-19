@@ -21,7 +21,7 @@ And finnaly everything is dockerized and built with aid of Azure DevOps CI/CD & 
 
 ## Diagrams
 <p align="center">
-	<img  src="https://user-images.githubusercontent.com/45321513/219958829-fc1d746a-1973-4d83-a4dc-87cf0804949f.png">
+	<img src="https://user-images.githubusercontent.com/45321513/219966365-0336294d-4d9f-46c3-bb11-55ddb9c05ae0.png">
 </p>
 
 <p align="center">
