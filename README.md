@@ -6,8 +6,11 @@
 	<img src="https://badgen.net/badge/icon/Docker?icon=docker&label">
 
 </p>
+<p>
+</p>
+
 <p align="center">
-	<img src="https://dev.azure.com/arminsmajlagic/banking/_apis/build/status/banking?branchName=master">
+	<img src="https://dev.azure.com/arminsmajlagic/banking/_apis/build/status/test-app-pipline-CI?branchName=master">
 	<img src="https://badgen.net/badge/OpenAPI/3.0.3/cyan">
 </p>
 
