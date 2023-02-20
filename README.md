@@ -6,11 +6,8 @@
 	<img src="https://badgen.net/badge/icon/Docker?icon=docker&label">
 
 </p>
-<p>
-</p>
-
 <p align="center">
-	<img src="https://dev.azure.com/arminsmajlagic/banking/_apis/build/status/test-app-pipline-CI?branchName=master">
+	<img src="https://dev.azure.com/arminsmajlagic/banking/_apis/build/status/banking?branchName=master">
 	<img src="https://badgen.net/badge/OpenAPI/3.0.3/cyan">
 </p>
 
@@ -21,11 +18,16 @@ And finnaly everything is dockerized and built with aid of Azure DevOps CI/CD & 
 
 ## Diagrams
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/45321513/219966365-0336294d-4d9f-46c3-bb11-55ddb9c05ae0.png">
+	<img  src="https://user-images.githubusercontent.com/45321513/219958829-fc1d746a-1973-4d83-a4dc-87cf0804949f.png">
 </p>
-
 <p align="center">
-	<img width="80%"  src="https://user-images.githubusercontent.com/45321513/219960017-e5d988e9-8c8d-465c-96f6-4c866ce3f2a2.png">
+	<P align="center">Image 1. Overview of API Architecture & used technologies</P>
+</p>
+<p align="center">
+	<img width="75%"  src="https://user-images.githubusercontent.com/45321513/219960017-e5d988e9-8c8d-465c-96f6-4c866ce3f2a2.png">
+</p>
+<p align="center">
+	<P align="center">Image 2. Request pipline</P>
 </p>
 
 ## Technologies
@@ -58,6 +60,26 @@ And finnaly everything is dockerized and built with aid of Azure DevOps CI/CD & 
 ## DevOps 
 - Dockerization and orchestration of API, PostgreSQL database, Redis Caching and other tools
 - Azure CI/CD Piplines
+- Kubernetes for orchestration or docker compose
+
+<p>
+ To run all required containers with Docker compose orchestration : 
+	
+	docker-compose up
+</p>
+
+You can use Kubernetes but first you have to push the api image to Docker Hub or other container registry.
+
+<p>
+ Then deploy to Kubernetes use following command in your terminal: 
+	
+	kubectl apply -f deployment.yml
+</p>
+and to make it available through TCP protocol you have to run Load Balancer with the following command :
+<p>
+ 	
+	kubectl apply -f service.yml
+</p>
 
 
 Author: Armin Smajlagic
