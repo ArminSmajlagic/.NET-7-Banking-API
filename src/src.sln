@@ -8,8 +8,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7DFCE7AA-B662-4513-AA8F-6395C4916FAE}"
 	ProjectSection(SolutionItems) = preProject
 		azure-piplines.yml = azure-piplines.yml
+		deployment.yml = deployment.yml
 		docker-compose.yml = docker-compose.yml
 		README.md = README.md
+		service.yml = service.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "banking.test", "banking.test\banking.test.csproj", "{2815A3A3-E30F-4DE9-9157-B51D072DD4CB}"

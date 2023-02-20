@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: banking
+  labels:
+    app: banking
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: banking
+  template:
+    metadata:
+      labels:
+        app: banking
+    spec:
+      containers:
+        - name: banking-api
+          image: zatoxer/banking
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
